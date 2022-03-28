@@ -15,7 +15,9 @@
     --color_11: hsl(120, 1%, 84%);
     --color_12: hsl(216, 6%, 16%);
 }
-
+/* -------------------------------------------------------------------------- */
+/* MAIN FLEX LAYOUT
+/* -------------------------------------------------------------------------- */
 .flex-container {
     display: flex;
 
@@ -24,30 +26,42 @@
     /* flex-flow: column; */
     flex-direction: column;
 
-    background-color: #bbdefb;
+    background-color: var(--color_11);
     height: 100%;
-    padding: 15px;
-    gap: 5px;
+    padding: 8px;
+    gap: 8px;
 }
-
-.flex-container > div {
+/* .flex-container > div {
     background: #ffecb3;
     border: 3px solid #ffcc80;
     border-radius: 5px;
     padding: 8px;
-}
-
-.item1 {
+} */
+.header {
+    background: var(--color_6);
     /* flex:0 1 auto; */
     order: 0;
     flex-grow: 0;
     overflow: auto;
 }
-
-.item2 {
+.game {
+    background: var(--color_7);
     /* flex:1 1 auto; */
     flex-grow: 1;
     align-self: auto;
+    overflow: auto;
+}
+.keyboard {
+    background: var(--color_9);
+    flex-grow: 1;
+    align-self: auto;
+    overflow: auto;
+}
+.ads {
+    background: var(--color_8);
+    flex-grow: 1;
+    align-self: auto;
+    overflow: auto;
 }
 
 /* -------------------------------------------------------------------------- */
