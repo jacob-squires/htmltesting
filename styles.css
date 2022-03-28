@@ -1,0 +1,89 @@
+/* -------------------------------------------------------------------------- */
+/* BASIC SETUP
+/* -------------------------------------------------------------------------- */
+:root {
+    --color_1: hsl(0, 0%, 100%);
+    --color_2: hsl(120, 1%, 60%);
+    --color_3: hsl(214, 6%, 24%);
+    --color_4: hsl(210, 5%, 16%);
+    --color_5: hsl(200, 5%, 12%);
+    --color_6: hsl(114, 29%, 40%);
+    --color_7: hsl(42, 100%, 56%);
+    --color_8: hsl(217, 84%, 57%);
+    --color_9: hsl(22, 97%, 57%);
+    --color_10: hsl(114, 29%, 56%);
+    --color_11: hsl(120, 1%, 84%);
+    --color_12: hsl(216, 6%, 16%);
+}
+
+.flex-container {
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: stretch;
+    /* flex-flow: column; */
+    flex-direction: column;
+
+    background-color: #bbdefb;
+    height: 100%;
+    padding: 15px;
+    gap: 5px;
+}
+
+.flex-container > div {
+    background: #ffecb3;
+    border: 3px solid #ffcc80;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.item1 {
+    /* flex:0 1 auto; */
+    order: 0;
+    flex-grow: 0;
+    overflow: auto;
+}
+
+.item2 {
+    /* flex:1 1 auto; */
+    flex-grow: 1;
+    align-self: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HEADER STYLES
+/* -------------------------------------------------------------------------- */
+.header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    align-items: center;
+    justify-content: center;
+}
+.header-left {
+    padding: 4px;
+    justify-self: left;
+    text-align: left;
+    width: 100%;
+}
+.header-logo {
+    padding: 4px;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    font-family: "Luckiest Guy";
+    font-size: 2em;
+    color: var(--color_1);
+    text-shadow: -4px 2px 0px var(--color_6);
+}
+.header-right {
+    padding: 4px;
+    justify-self: right;
+    text-align: right;
+}
+.header-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
