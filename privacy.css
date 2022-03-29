@@ -1,0 +1,136 @@
+/* -------------------------------------------------------------------------- */
+/* BASIC SETUP
+/* -------------------------------------------------------------------------- */
+:root {
+    --color01: hsl(0, 0%, 100%);
+    --color02: hsl(120, 1%, 60%);
+    --color03: hsl(214, 6%, 24%);
+    --color04: hsl(210, 5%, 16%);
+    --color05: hsl(200, 5%, 12%);
+    --color06: hsl(114, 29%, 40%);
+    --color07: hsl(42, 100%, 56%);
+    --color08: hsl(217, 84%, 57%);
+    --color09: hsl(22, 97%, 57%);
+    --color10: hsl(114, 29%, 56%);
+    --color11: hsl(120, 1%, 84%);
+    --color12: hsl(216, 6%, 16%);
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    font-family: "Arial", "sans-serif";
+    color: var(--color01);
+}
+html,
+body {
+    background: var(--color04);
+    height: 100%;
+    touch-action: manipulation;
+}
+a {
+    color: hsl(217, 84%, 57%);
+}
+h1 {
+    color: var(--color09);
+}
+h2 {
+    color: var(--color06);
+}
+h3 {
+    color: var(--color10);
+}
+p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+ul {
+    padding-inline-start: 16px;
+}
+focus {
+    color: var(--color07);
+}
+/* -------------------------------------------------------------------------- */
+/* SHARE BUTTON for copying to clipboard
+/* -------------------------------------------------------------------------- */
+#share {
+    width: 100%;
+    padding: 8px;
+    align-self: center;
+    text-align: center;
+}
+
+.shareButton {
+    background-color: var(--color06);
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    color: var(--color01);
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+
+.shareButton:hover {
+    background-color: var(--color10);
+}
+
+.shareButton:active {
+    position: relative;
+    top: 1px;
+}
+/* -------------------------------------------------------------------------- */
+/* PRIVACY
+/* -------------------------------------------------------------------------- */
+#privacy {
+    overflow: auto;
+    /* position: fixed; */
+    /* width: 100%; */
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* align-content: flex-start; */
+    background-color: var(--color04);
+}
+#privacy-container {
+    /* color: var(--color01); */
+    margin: 8px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+}
+#privacy-content {
+    background-color: var(--color05);
+    font-family: arial;
+    font-size: 0.9em;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+}
+.privacy-instructions {
+    padding: 8px;
+}
+.privacy-instructions > p {
+    padding: 8px;
+}
+.privacy-examples {
+    border-top: 1px solid var(--color02);
+    padding: 16px;
+    width: 100%;
+}

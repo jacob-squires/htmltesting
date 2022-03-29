@@ -29,30 +29,11 @@
 html,
 body {
     background: var(--color04);
-    height: 100%;
+    /* height: 100%; */
     touch-action: manipulation;
 }
 a {
-    color: hsl(217, 84%, 57%);
-}
-h1 {
-    color: var(--color09);
-}
-h2 {
-    color: var(--color06);
-}
-h3 {
-    color: var(--color10);
-}
-p {
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-ul {
-    padding-inline-start: 16px;
-}
-focus {
-    color: var(--color07);
+    color: var(--color08);
 }
 /* -------------------------------------------------------------------------- */
 /* LAYOUT RULES
