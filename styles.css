@@ -14,98 +14,112 @@
     --color10: hsl(114, 29%, 56%);
     --color11: hsl(120, 1%, 84%);
     --color12: hsl(216, 6%, 16%);
-
-    --header-height: 4vh;
 }
-/* -------------------------------------------------------------------------- */
-/* MAIN FLEX LAYOUT
-/* -------------------------------------------------------------------------- */
-.flex-container {
-    display: flex;
-
-    justify-content: flex-start;
-    align-items: stretch;
-    /* flex-flow: column; */
-    flex-direction: column;
-
-    background-color: var(--color11);
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    font-family: "Arial", "sans-serif";
+    color: var(--color01);
+}
+html,
+body {
+    background: var(--color04);
     height: 100%;
-    /* padding: 8px; */
-    gap: 8px;
+    touch-action: manipulation;
 }
-.flex-container > div {
-    /* background: #ffecb3; */
-    /* border: 3px solid #ffcc80; */
-    border-radius: 5px;
-    padding: 8px;
+a {
+    color: hsl(217, 84%, 57%);
+}
+h1 {
+    color: var(--color09);
+}
+h2 {
+    color: var(--color06);
+}
+h3 {
+    color: var(--color10);
+}
+p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+ul {
+    padding-inline-start: 16px;
+}
+focus {
+    color: var(--color07);
+}
+/* -------------------------------------------------------------------------- */
+/* LAYOUT RULES
+/* -------------------------------------------------------------------------- */
+.layout {
+    width: 100%;
+
+    display: grid;
+    grid:
+        "header" 32px
+        "board" 1fr
+        "footer" 178px
+        "ad" 150px
+        / 1fr;
+    gap: 0px;
 }
 .header {
-    background: var(--color06);
-    order: 0;
-    /* flex-grow: 0; */
-    overflow: auto;
+    grid-area: header;
+    background-color: var(--color05);
 }
-.game {
-    background: var(--color04);
-    flex-grow: 1;
-    align-self: auto;
-    /* overflow: auto; */
-    /* height: 1fr; */
+.board {
+    grid-area: board;
+    background-color: var(--color04);
     text-align: center;
-    vertical-align: middle;
-    /* line-height: 1fr; */
 }
-.keyboard {
-    background: var(--color09);
-    /* flex-grow: 0; */
-    align-self: auto;
-    overflow: auto;
+.footer {
+    grid-area: footer;
+    background-color: var(--color04);
+    text-align: center;
+    justify-self: center;
+    width: 100%;
 }
-.ads {
-    background: var(--color08);
-    /* flex-grow: 0; */
-    align-self: auto;
-    overflow: auto;
+.ad {
+    grid-area: ad;
+    background-color: var(--color04);
+    text-align: center;
 }
-
 /* -------------------------------------------------------------------------- */
 /* HEADER STYLES
 /* -------------------------------------------------------------------------- */
 .header-grid {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-columns: 110px 1fr 110px;
     gap: 0px 0px;
-    align-items: center;
-    justify-content: center;
 }
 .header-left {
-    padding: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    border: 1px solid var(--color01);
-    height: var(--header-height);
-}
-.header-right {
-    padding: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    border: 1px solid var(--color01);
-    height: var(--header-height);
+    padding: 4px;
+    justify-self: left;
+    text-align: left;
+    width: 100%;
 }
 .header-logo {
-    padding: 0px;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
     width: 100%;
     font-family: "Luckiest Guy";
-    font-size: 2em;
+    font-size: 1.8em;
+    line-height: 1.2em;
     color: var(--color01);
-    text-shadow: -4px 2px 0px var(--color09);
-    border: 1px solid var(--color01);
-    height: var(--header-height);
-    text-align: center;
-    vertical-align: middle;
-    line-height: var(--header-height);
+    text-shadow: -4px 2px 0px var(--color06);
+}
+.header-right {
+    padding: 4px;
+    justify-self: right;
+    text-align: right;
+    width: 100%;
 }
 .header-button {
     border: none;
@@ -113,21 +127,21 @@
     cursor: pointer;
 }
 /* -------------------------------------------------------------------------- */
-/* GUESS TILES STYLES
+/* GUESS TILES
 /* -------------------------------------------------------------------------- */
-/* .guess {
-    display: inline-block;
-} */
+.guess {
+    display: flex;
+}
 .guess-grid {
     display: grid;
     justify-content: center;
     align-content: center;
-    /* flex-grow: 0; */
+    flex-grow: 1;
     grid-template-columns: repeat(5, 4em);
     grid-template-rows: repeat(6, 4em);
     gap: 0.25em;
-    /* margin-top: 1em;
-    margin-bottom: 1em; */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 .guess-tile {
     font-size: 2em;
@@ -142,7 +156,7 @@
     transition: transform 250ms linear;
 }
 .guess-tile[data-state="active"] {
-    border-color: var(--color01);
+    border-color: var(--color02);
 }
 .guess-tile[data-state="wrong"] {
     border: none;
@@ -164,4 +178,458 @@
 }
 .guess-tile.flip {
     transform: rotateX(90deg);
+}
+/* -------------------------------------------------------------------------- */
+/* KEYBOARD
+/* -------------------------------------------------------------------------- */
+.keyboard {
+    display: flex;
+}
+.keyboard-grid {
+    display: grid;
+    justify-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(20, minmax(0.9em, 1.25em));
+    grid-template-rows: repeat(3, 3.5em);
+    gap: 0.25em;
+}
+.key {
+    font-size: 0.85em;
+    font-weight: bold;
+    grid-column: span 2;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(
+        var(--hue, 120),
+        var(--saturation, 1%),
+        calc(var(--lightness-offset, 0%) + var(--lightness, 60%))
+    );
+    /* background-color: var(--color02); */
+    color: var(--color01);
+    fill: var(--color01);
+    text-transform: uppercase;
+    border-radius: 0.25em;
+    cursor: pointer;
+    user-select: none;
+}
+.key.large {
+    grid-column: span 3;
+}
+.key > svg {
+    width: 1.75em;
+    height: 1.75em;
+}
+.key:hover,
+.key:focus {
+    --lightness-offset: 10%;
+    /* background-color: var(--color11); */
+}
+.key.wrong {
+    --lightness: 24%;
+    /* background-color: var(--color03); */
+}
+.key.wrong-location {
+    --hue: 42;
+    --saturation: 100%;
+    --lightness: 56%;
+    /* background-color: var(--color07); */
+}
+.key.correct {
+    --hue: 114;
+    --saturation: 29%;
+    --lightness: 40%;
+    /* background-color: var(--color06); */
+}
+/* -------------------------------------------------------------------------- */
+/* AD
+/* -------------------------------------------------------------------------- */
+.ad {
+    display: flex;
+}
+/* -------------------------------------------------------------------------- */
+/* ALERT
+/* -------------------------------------------------------------------------- */
+.alert-container {
+    position: fixed;
+    top: 40px;
+    left: 50vw;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.alert {
+    pointer-events: none;
+    background-color: var(--color02);
+    color: var(--color01);
+    padding: 0.75em;
+    border-radius: 0.25em;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+.alert:last-child {
+    margin-bottom: 0;
+}
+.alert.hide {
+    opacity: 0;
+}
+/* -------------------------------------------------------------------------- */
+/* OVERLAY
+/* -------------------------------------------------------------------------- */
+#overlay {
+    overflow: auto;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background-color: var(--color04);
+}
+
+#overlay-container {
+    color: var(--color01);
+    margin: 8px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+#overlay-header {
+    background-color: var(--color06);
+    padding: 10px;
+    border-top-left-radius: 0.35em;
+    border-top-right-radius: 0.35em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    font-family: arial;
+    font-size: 1.25em;
+    font-style: bold;
+}
+
+#overlay-content {
+    background-color: var(--color05);
+    font-family: arial;
+    font-size: 0.9em;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+}
+
+#overlay-content-statistics {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(4, 4em);
+    gap: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#overlay-content-distribution {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 1px solid var(--color02);
+    width: 300px;
+    padding: 8px;
+}
+
+#overlay-footer {
+    background-color: var(--color05);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 16px;
+    border-bottom-left-radius: 0.35em;
+    border-bottom-right-radius: 0.35em;
+}
+/* -------------------------------------------------------------------------- */
+/* HELP for OVERLAY
+/* -------------------------------------------------------------------------- */
+.help-instructions {
+    padding: 8px;
+    /* width: 350px; */
+}
+
+.help-instructions > p {
+    padding: 8px;
+}
+
+.help-examples {
+    /* border-bottom: 1px solid hsl(0, 0%, 100%); */
+    border-top: 1px solid var(--color02);
+    /* padding-top: 8px; */
+    padding: 16px;
+    width: 100%;
+}
+
+.help-row {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(1, 4em);
+    gap: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/* -------------------------------------------------------------------------- */
+/* STATISTICS for OVERLAY
+/* -------------------------------------------------------------------------- */
+.stat-container {
+    flex: 1;
+    border: 1px solid var(--color02);
+}
+
+.stat-container-statistic {
+    font-size: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    letter-spacing: 0.05em;
+    font-variant-numeric: proportional-nums;
+}
+
+.stat-container-label {
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+}
+/* -------------------------------------------------------------------------- */
+/* DISTRIBUTION for OVERLAY
+/* -------------------------------------------------------------------------- */
+.dist-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dist-guess {
+    display: block;
+}
+
+.dist-graph {
+    width: 100%;
+    height: 100%;
+    padding-left: 4px;
+}
+
+.dist-graph-bar {
+    height: 100%;
+    width: 0%;
+    position: relative;
+    background-color: var(--color03);
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 8px;
+}
+
+.dist-guesses {
+    font-weight: bold;
+    color: var(--color01);
+}
+
+.highlight {
+    background-color: var(--color06);
+}
+/* -------------------------------------------------------------------------- */
+/* SHARE BUTTON for copying to clipboard
+/* -------------------------------------------------------------------------- */
+#share {
+    width: 100%;
+    padding: 8px;
+    align-self: center;
+    text-align: center;
+}
+
+.shareButton {
+    background-color: var(--color06);
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    color: var(--color01);
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+
+.shareButton:hover {
+    background-color: var(--color10);
+}
+
+.shareButton:active {
+    position: relative;
+    top: 1px;
+}
+/* -------------------------------------------------------------------------- */
+/* CLOCK for COUNTDOWN
+/* -------------------------------------------------------------------------- */
+#clockdiv {
+    font-family: sans-serif;
+    color: var(--color01);
+    display: flex;
+    justify-content: center;
+    font-weight: 100;
+    text-align: center;
+    font-size: 22px;
+    border-top: 1px solid var(--color02);
+    width: 300px;
+    padding: 8px;
+}
+
+#clockdiv > div {
+    padding: 4px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+#clockdiv div > span {
+    padding: 8px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.nexttext {
+    background: var(--color05);
+}
+.hours {
+    background: var(--color03);
+}
+.minutes {
+    background: var(--color03);
+}
+.seconds {
+    background: var(--color03);
+}
+/* -------------------------------------------------------------------------- */
+/* PRIVACY
+/* -------------------------------------------------------------------------- */
+#privacy {
+    overflow: auto;
+    /* position: fixed; */
+    /* width: 100%; */
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* align-content: flex-start; */
+    background-color: var(--color04);
+}
+#privacy-container {
+    /* color: var(--color01); */
+    margin: 8px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+}
+#privacy-content {
+    background-color: var(--color05);
+    font-family: arial;
+    font-size: 0.9em;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+}
+.privacy-instructions {
+    padding: 8px;
+}
+.privacy-instructions > p {
+    padding: 8px;
+}
+.privacy-examples {
+    border-top: 1px solid var(--color02);
+    padding: 16px;
+    width: 100%;
+}
+/* -------------------------------------------------------------------------- */
+/* ANIMATIONS
+/* -------------------------------------------------------------------------- */
+@keyframes shake {
+    10% {
+        transform: translateX(-5%);
+    }
+    30% {
+        transform: translateX(5%);
+    }
+    50% {
+        transform: translateX(-7.5%);
+    }
+    70% {
+        transform: translateX(7.5%);
+    }
+    90% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes dance {
+    20% {
+        transform: translateY(-50%);
+    }
+    40% {
+        transform: translateY(5%);
+    }
+    60% {
+        transform: translateY(-25%);
+    }
+    80% {
+        transform: translateY(2.5%);
+    }
+    90% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/* -------------------------------------------------------------------------- */
+/* MEDIA QUERRIES FOR MOBILE BROWSERS
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 375px) {
+    .guess-grid {
+        grid-template-columns: repeat(5, 3em);
+        grid-template-rows: repeat(6, 3em);
+    }
 }
